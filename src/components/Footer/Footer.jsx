@@ -13,7 +13,7 @@ const Footer = () => {
                 </li>
                 <li class="my-2">
                     <a class="text-gray-400 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-200" href="#">
-                        Configuration
+                        Services
                     </a>
                 </li>
                 <li class="my-2">

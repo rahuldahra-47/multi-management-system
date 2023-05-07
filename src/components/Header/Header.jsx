@@ -7,20 +7,19 @@ import attendance from "../../assets/attendance.png";
 import Profile1 from "../../assets/rahul.jpg";
 import Profile2 from "../../assets/harshit.jpg";
 import Profile3 from "../../assets/rohit.jpg";
-import LoginForm from "../login_form/LoginForm";
+
 import { useAuth0 } from "@auth0/auth0-react";
 const navigation = [
   { name: "Home", href: "#home" },
   { name: "Services", href: "#services" },
   { name: "AboutUs", href: "#aboutus" },
-  {name: "FAQ",href:"#faq"},
+  { name: "FAQ", href: "#faq" },
   { name: "ContactUs", href: "#contactus" },
 ];
 
-
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { loginWithRedirect,logout,isAuthenticated,user} = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   return (
     <div className="bg-white" id="home">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -57,22 +56,30 @@ export default function Header() {
           </div>
 
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            {isAuthenticated&&<p className="mr-[13px] text-black-600 font-semibold">{user.name}</p>}
-         {isAuthenticated?<button
-              type="button"
-              className="text-sm font-semibold leading-6 text-gray-900"
-              onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-            >
-              Log Out <span aria-hidden="true">&rarr;</span>
-            </button>
-            :<button
-            type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
-            onClick={() => loginWithRedirect()}
-          >
-            Log in <span aria-hidden="true">&rarr;</span>
-          </button>}  
-        
+            {isAuthenticated && (
+              <p className="mr-[13px] text-black-600 font-semibold">
+                {user.name}
+              </p>
+            )}
+            {isAuthenticated ? (
+              <button
+                type="button"
+                className="text-sm font-semibold leading-6 text-gray-900"
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              >
+                Log Out <span aria-hidden="true">&rarr;</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="text-sm font-semibold leading-6 text-gray-900"
+                onClick={() => loginWithRedirect()}
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </button>
+            )}
           </div>
         </nav>
         <Dialog
@@ -115,17 +122,25 @@ export default function Header() {
                   ))}
                 </div>
                 <div className="py-6">
-                 {isAuthenticated?<button
-                  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Log Out
-                  </button> :<button
-                  onClick={() => loginWithRedirect()}
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in
-                  </button>} 
+                  {isAuthenticated ? (
+                    <button
+                      onClick={() =>
+                        logout({
+                          logoutParams: { returnTo: window.location.origin },
+                        })
+                      }
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log Out
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => loginWithRedirect()}
+                      className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log in
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -305,7 +320,7 @@ export default function Header() {
           <p class="mb-12 text-xl font-normal text-center text-gray-500 dark:text-gray-900">
             Meet the developers who have made your life easy
           </p>
-          <div class="flex flex-col items-center md:flex-row justify-between">
+          <div class="flex flex-col items-center md:flex-row justify-center">
             <div class="p-4">
               <div class="mb-4 text-center opacity-90">
                 <a href="#" class="relative block">
@@ -395,9 +410,7 @@ export default function Header() {
                 </a>
               </div>
               <div class="text-center">
-                <p class="text-2xl text-gray-800 dark:text-black">
-                  Harshit 
-                </p>
+                <p class="text-2xl text-gray-800 dark:text-black">Harshit</p>
                 <p class="text-xl font-light text-gray-500 dark:text-gray-700">
                   Front End Developer
                 </p>
@@ -477,7 +490,7 @@ export default function Header() {
                   Rohit Chugh
                 </p>
                 <p class="text-xl font-light text-gray-500 dark:text-gray-700">
-                 Front End Developer
+                  Front End Developer
                 </p>
                 <p class="max-w-xs py-4 font-light text-gray-500 text-md dark:text-gray-900">
                   Rohit Chugh, born November 14, 2001 in Sonipat, Haryana
@@ -544,87 +557,106 @@ export default function Header() {
         </div>
 
         <div class="max-w-screen-xl p-8 mx-auto">
-    <h2 class="mb-12 text-3xl font-extrabold leading-9 text-gray-900 border-b-2 border-gray-100">
-        FAQs
-    </h2>
-    <ul class="flex flex-wrap items-start gap-8">
-        <li class="w-2/5">
-            <p class="text-lg font-medium leading-6 text-gray-900">
-               How to download attendance sheet?
-            </p>
-            <p class="mt-2">
+          <h2 class="mb-12 text-3xl font-extrabold leading-9 text-gray-900 border-b-2 border-gray-100" id="faq">
+            FAQs
+          </h2>
+          <ul class="flex flex-wrap items-start gap-8">
+            <li class="w-2/5">
+              <p class="text-lg font-medium leading-6 text-gray-900">
+                How to download attendance sheet?
+              </p>
+              <p class="mt-2">
                 <p class="text-base leading-6 text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum delectus sit voluptates magnam at voluptate nulla quidem quis accusamus. Corrupti distinctio nulla unde labore architecto optio blanditiis. Sapiente doloremque tempora voluptate non consequatur? Blanditiis maiores voluptatem magnam illo ipsum dolorum.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                  delectus sit voluptates magnam at voluptate nulla quidem quis
+                  accusamus. Corrupti distinctio nulla unde labore architecto
+                  optio blanditiis. Sapiente doloremque tempora voluptate non
+                  consequatur? Blanditiis maiores voluptatem magnam illo ipsum
+                  dolorum.
                 </p>
-            </p>
-        </li>
-        <li class="w-2/5">
-            <p class="text-lg font-medium leading-6 text-gray-900">
+              </p>
+            </li>
+            <li class="w-2/5">
+              <p class="text-lg font-medium leading-6 text-gray-900">
                 How to add new stock item?
-            </p>
-            <p class="mt-2">
+              </p>
+              <p class="mt-2">
                 <p class="text-base leading-6 text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem earum molestiae eligendi, qui vitae facilis quae, minima nobis similique nisi expedita quidem ab facere beatae error. Voluptatum distinctio corrupti sapiente.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                  earum molestiae eligendi, qui vitae facilis quae, minima nobis
+                  similique nisi expedita quidem ab facere beatae error.
+                  Voluptatum distinctio corrupti sapiente.
                 </p>
-            </p>
-        </li>
-        <li class="w-2/5">
-            <p class="text-lg font-medium leading-6 text-gray-900">
+              </p>
+            </li>
+            <li class="w-2/5">
+              <p class="text-lg font-medium leading-6 text-gray-900">
                 How to generate excel sheet for stock?
-            </p>
-            <p class="mt-2">
+              </p>
+              <p class="mt-2">
                 <p class="text-base leading-6 text-gray-500">
-                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat harum laboriosam officiis molestiae ex, dolores nemo earum quos eius. Unde delectus aliquid eligendi impedit ad consequatur laborum veritatis? Nostrum, asperiores!
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Placeat harum laboriosam officiis molestiae ex, dolores nemo
+                  earum quos eius. Unde delectus aliquid eligendi impedit ad
+                  consequatur laborum veritatis? Nostrum, asperiores!
                 </p>
-            </p>
-        </li>
-        <li class="w-2/5">
-            <p class="text-lg font-medium leading-6 text-gray-900">
-               How to update profile pic?
-            </p>
-            <p class="mt-2">
+              </p>
+            </li>
+            <li class="w-2/5">
+              <p class="text-lg font-medium leading-6 text-gray-900">
+                How to update profile pic?
+              </p>
+              <p class="mt-2">
                 <p class="text-base leading-6 text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis sed amet nostrum cum voluptas provident corrupti, obcaecati itaque modi, ex, blanditiis non ducimus! Fugit exercitationem assumenda iure nemo voluptatum. Quidem!
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Debitis sed amet nostrum cum voluptas provident corrupti,
+                  obcaecati itaque modi, ex, blanditiis non ducimus! Fugit
+                  exercitationem assumenda iure nemo voluptatum. Quidem!
                 </p>
-            </p>
-        </li>
-        <li class="w-2/5">
-            <p class="text-lg font-medium leading-6 text-gray-900">
+              </p>
+            </li>
+            <li class="w-2/5">
+              <p class="text-lg font-medium leading-6 text-gray-900">
                 How to issue fine to defaulter?
-            </p>
-            <p class="mt-2">
+              </p>
+              <p class="mt-2">
                 <p class="text-base leading-6 text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum inventore quam doloribus quaerat, aut voluptatem earum id eligendi, vero error maxime corporis quo, alias officia magni modi quod voluptatum commodi.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+                  inventore quam doloribus quaerat, aut voluptatem earum id
+                  eligendi, vero error maxime corporis quo, alias officia magni
+                  modi quod voluptatum commodi.
                 </p>
-            </p>
-        </li>
-        <li class="w-2/5">
-            <p class="text-lg font-medium leading-6 text-gray-900">
+              </p>
+            </li>
+            <li class="w-2/5">
+              <p class="text-lg font-medium leading-6 text-gray-900">
                 How to send reminder to students with low attendance?
-            </p>
-            <p class="mt-2">
+              </p>
+              <p class="mt-2">
                 <p class="text-base leading-6 text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus error nisi nam quis voluptates consectetur aut explicabo tempora quia adipisci.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Possimus error nisi nam quis voluptates consectetur aut
+                  explicabo tempora quia adipisci.
                 </p>
-            </p>
-        </li>
-    </ul>
-</div>
-<div class="container my-24 px-6 mx-auto">
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="container my-24 px-6 mx-auto">
+          <section class="mb-32 text-gray-800">
+            <div class="flex justify-center">
+              <div class="text-center lg:max-w-3xl md:max-w-xl">
+                <h2 class="text-3xl font-bold mb-12 px-6">Contact us</h2>
+              </div>
+            </div>
 
-
-  <section class="mb-32 text-gray-800">
-    <div class="flex justify-center">
-      <div class="text-center lg:max-w-3xl md:max-w-xl">
-        <h2 class="text-3xl font-bold mb-12 px-6">Contact us</h2>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap">
-      <div class="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6">
-        <form>
-          <div class="form-group mb-6">
-            <input type="text" class="form-control block
+            <div class="flex flex-wrap">
+              <div class="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6">
+                <form>
+                  <div class="form-group mb-6">
+                    <input
+                      type="text"
+                      class="form-control block
             w-full
             px-3
             py-1.5
@@ -637,11 +669,15 @@ export default function Header() {
             transition
             ease-in-out
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none" id="exampleInput7"
-              placeholder="Name"/>
-          </div>
-          <div class="form-group mb-6">
-            <input type="email" class="form-control block
+            focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none"
+                      id="exampleInput7"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div class="form-group mb-6">
+                    <input
+                      type="email"
+                      class="form-control block
             w-full
             px-3
             py-1.5
@@ -654,11 +690,14 @@ export default function Header() {
             transition
             ease-in-out
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none" id="exampleInput8"
-              placeholder="Email address"/>
-          </div>
-          <div class="form-group mb-6">
-            <textarea class="
+            focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none"
+                      id="exampleInput8"
+                      placeholder="Email address"
+                    />
+                  </div>
+                  <div class="form-group mb-6">
+                    <textarea
+                      class="
             form-control
             block
             w-full
@@ -674,10 +713,16 @@ export default function Header() {
             ease-in-out
             m-0
             focus:text-gray-700 focus:bg-white focus:border-indigo-600 focus:outline-none
-          " id="exampleFormControlTextarea13" rows="3" placeholder="Message"></textarea>
-          </div>
-         
-          <button type="submit" class="
+          "
+                      id="exampleFormControlTextarea13"
+                      rows="3"
+                      placeholder="Message"
+                    ></textarea>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="
           w-full
           px-6
           py-2.5
@@ -694,95 +739,139 @@ export default function Header() {
           active:bg-indigo-800 active:shadow-lg
           transition
           duration-150
-          ease-in-out" >Send</button>
-        </form>
-      </div>
-      <div class="grow-0 shrink-0 basis-auto w-full lg:w-7/12">
-        <div class="flex flex-wrap">
-          <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
-            <div class="flex items-start">
-              <div class="shrink-0">
-                <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
-                  <a href="mailto:support@aiomanagement.com"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="headset" class="w-5 text-white"
-                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path fill="currentColor"
-                      d="M192 208c0-17.67-14.33-32-32-32h-16c-35.35 0-64 28.65-64 64v48c0 35.35 28.65 64 64 64h16c17.67 0 32-14.33 32-32V208zm176 144c35.35 0 64-28.65 64-64v-48c0-35.35-28.65-64-64-64h-16c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h16zM256 0C113.18 0 4.58 118.83 0 256v16c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16v-16c0-114.69 93.31-208 208-208s208 93.31 208 208h-.12c.08 2.43.12 165.72.12 165.72 0 23.35-18.93 42.28-42.28 42.28H320c0-26.51-21.49-48-48-48h-32c-26.51 0-48 21.49-48 48s21.49 48 48 48h181.72c49.86 0 90.28-40.42 90.28-90.28V256C507.42 118.83 398.82 0 256 0z">
-                    </path>
-                  </svg></a>
+          ease-in-out"
+                  >
+                    Send
+                  </button>
+                </form>
+              </div>
+              <div class="grow-0 shrink-0 basis-auto w-full lg:w-7/12">
+                <div class="flex flex-wrap">
+                  <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
+                    <div class="flex items-start">
+                      <div class="shrink-0">
+                        <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <a href="mailto:support@aiomanagement.com">
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="headset"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M192 208c0-17.67-14.33-32-32-32h-16c-35.35 0-64 28.65-64 64v48c0 35.35 28.65 64 64 64h16c17.67 0 32-14.33 32-32V208zm176 144c35.35 0 64-28.65 64-64v-48c0-35.35-28.65-64-64-64h-16c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h16zM256 0C113.18 0 4.58 118.83 0 256v16c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16v-16c0-114.69 93.31-208 208-208s208 93.31 208 208h-.12c.08 2.43.12 165.72.12 165.72 0 23.35-18.93 42.28-42.28 42.28H320c0-26.51-21.49-48-48-48h-32c-26.51 0-48 21.49-48 48s21.49 48 48 48h181.72c49.86 0 90.28-40.42 90.28-90.28V256C507.42 118.83 398.82 0 256 0z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="grow ml-6">
+                        <p class="font-bold mb-1">Technical support</p>
+                        <p class="text-gray-500">support@aiomanagement.com</p>
+                        <p class="text-gray-500">+91 989634****</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
+                    <div class="flex items-start">
+                      <div class="shrink-0">
+                        <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <a href="mailto:sales@aiomanagement.com">
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="dollar-sign"
+                              class="w-3 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 288 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M209.2 233.4l-108-31.6C88.7 198.2 80 186.5 80 173.5c0-16.3 13.2-29.5 29.5-29.5h66.3c12.2 0 24.2 3.7 34.2 10.5 6.1 4.1 14.3 3.1 19.5-2l34.8-34c7.1-6.9 6.1-18.4-1.8-24.5C238 74.8 207.4 64.1 176 64V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48h-2.5C45.8 64-5.4 118.7.5 183.6c4.2 46.1 39.4 83.6 83.8 96.6l102.5 30c12.5 3.7 21.2 15.3 21.2 28.3 0 16.3-13.2 29.5-29.5 29.5h-66.3C100 368 88 364.3 78 357.5c-6.1-4.1-14.3-3.1-19.5 2l-34.8 34c-7.1 6.9-6.1 18.4 1.8 24.5 24.5 19.2 55.1 29.9 86.5 30v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48.2c46.6-.9 90.3-28.6 105.7-72.7 21.5-61.6-14.6-124.8-72.5-141.7z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="grow ml-6">
+                        <p class="font-bold mb-1">Sales questions</p>
+                        <p class="text-gray-500">sales@aiomanagement.com</p>
+                        <p class="text-gray-500">+91 749489****</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
+                    <div class="flex align-start">
+                      <div class="shrink-0">
+                        <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <a href="mailto:feedback@aiomanagement.com">
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="newspaper"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 576 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M552 64H88c-13.255 0-24 10.745-24 24v8H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h472c26.51 0 48-21.49 48-48V88c0-13.255-10.745-24-24-24zM56 400a8 8 0 0 1-8-8V144h16v248a8 8 0 0 1-8 8zm236-16H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm-208-96H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm0-96H140c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h360c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="grow ml-6">
+                        <p class="font-bold mb-1">Feedback</p>
+                        <p class="text-gray-500">feedback@aiomanagement.com</p>
+                        <p class="text-gray-500">+91 893021****</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
+                    <div class="flex align-start">
+                      <div class="shrink-0">
+                        <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
+                          <a href="mailto:bugs@aiomanagement.com">
+                            <svg
+                              aria-hidden="true"
+                              focusable="false"
+                              data-prefix="fas"
+                              data-icon="bug"
+                              class="w-5 text-white"
+                              role="img"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 512 512"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M511.988 288.9c-.478 17.43-15.217 31.1-32.653 31.1H424v16c0 21.864-4.882 42.584-13.6 61.145l60.228 60.228c12.496 12.497 12.496 32.758 0 45.255-12.498 12.497-32.759 12.496-45.256 0l-54.736-54.736C345.886 467.965 314.351 480 280 480V236c0-6.627-5.373-12-12-12h-24c-6.627 0-12 5.373-12 12v244c-34.351 0-65.886-12.035-90.636-32.108l-54.736 54.736c-12.498 12.497-32.759 12.496-45.256 0-12.496-12.497-12.496-32.758 0-45.255l60.228-60.228C92.882 378.584 88 357.864 88 336v-16H32.666C15.23 320 .491 306.33.013 288.9-.484 270.816 14.028 256 32 256h56v-58.745l-46.628-46.628c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0L141.255 160h229.489l54.627-54.627c12.498-12.497 32.758-12.497 45.256 0 12.496 12.497 12.496 32.758 0 45.255L424 197.255V256h56c17.972 0 32.484 14.816 31.988 32.9zM257 0c-61.856 0-112 50.144-112 112h224C369 50.144 318.856 0 257 0z"
+                              ></path>
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="grow ml-6">
+                        <p class="font-bold mb-1">Bug report</p>
+                        <p class="text-gray-500">bugs@aiomanagement.com</p>
+                        <p class="text-gray-500">0130-8810****</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="grow ml-6">
-                <p class="font-bold mb-1">Technical support</p>
-                <p class="text-gray-500">support@aiomanagement.com</p>
-                <p class="text-gray-500">+91 989634****</p>
-              </div>
             </div>
-          </div>
-          <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
-            <div class="flex items-start">
-              <div class="shrink-0">
-                <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
-                  <a href="mailto:sales@aiomanagement.com"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="dollar-sign"
-                    class="w-3 text-white" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 512">
-                    <path fill="currentColor"
-                      d="M209.2 233.4l-108-31.6C88.7 198.2 80 186.5 80 173.5c0-16.3 13.2-29.5 29.5-29.5h66.3c12.2 0 24.2 3.7 34.2 10.5 6.1 4.1 14.3 3.1 19.5-2l34.8-34c7.1-6.9 6.1-18.4-1.8-24.5C238 74.8 207.4 64.1 176 64V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48h-2.5C45.8 64-5.4 118.7.5 183.6c4.2 46.1 39.4 83.6 83.8 96.6l102.5 30c12.5 3.7 21.2 15.3 21.2 28.3 0 16.3-13.2 29.5-29.5 29.5h-66.3C100 368 88 364.3 78 357.5c-6.1-4.1-14.3-3.1-19.5 2l-34.8 34c-7.1 6.9-6.1 18.4 1.8 24.5 24.5 19.2 55.1 29.9 86.5 30v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48.2c46.6-.9 90.3-28.6 105.7-72.7 21.5-61.6-14.6-124.8-72.5-141.7z">
-                    </path>
-                  </svg></a>
-                </div>
-              </div>
-              <div class="grow ml-6">
-                <p class="font-bold mb-1">Sales questions</p>
-                <p class="text-gray-500">sales@aiomanagement.com</p>
-                <p class="text-gray-500">+91 749489****</p>
-              </div>
-            </div>
-          </div>
-          <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
-            <div class="flex align-start">
-              <div class="shrink-0">
-                <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
-                  <a href="mailto:feedback@aiomanagement.com"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="newspaper"
-                    class="w-5 text-white" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                    <path fill="currentColor"
-                      d="M552 64H88c-13.255 0-24 10.745-24 24v8H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h472c26.51 0 48-21.49 48-48V88c0-13.255-10.745-24-24-24zM56 400a8 8 0 0 1-8-8V144h16v248a8 8 0 0 1-8 8zm236-16H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm-208-96H140c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm208 0H348c-6.627 0-12-5.373-12-12v-8c0-6.627 5.373-12 12-12h152c6.627 0 12 5.373 12 12v8c0 6.627-5.373 12-12 12zm0-96H140c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h360c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12z">
-                    </path>
-                  </svg></a>
-                </div>
-              </div>
-              <div class="grow ml-6">
-                <p class="font-bold mb-1">Feedback</p>
-                <p class="text-gray-500">feedback@aiomanagement.com</p>
-                <p class="text-gray-500">+91 893021****</p>
-              </div>
-            </div>
-          </div>
-          <div class="mb-12 grow-0 shrink-0 basis-auto w-full lg:w-6/12 px-3 lg:px-6">
-            <div class="flex align-start">
-              <div class="shrink-0">
-                <div class="p-4 bg-indigo-600 rounded-md shadow-md w-14 h-14 flex items-center justify-center">
-                  <a href="mailto:bugs@aiomanagement.com"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bug" class="w-5 text-white"
-                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path fill="currentColor"
-                      d="M511.988 288.9c-.478 17.43-15.217 31.1-32.653 31.1H424v16c0 21.864-4.882 42.584-13.6 61.145l60.228 60.228c12.496 12.497 12.496 32.758 0 45.255-12.498 12.497-32.759 12.496-45.256 0l-54.736-54.736C345.886 467.965 314.351 480 280 480V236c0-6.627-5.373-12-12-12h-24c-6.627 0-12 5.373-12 12v244c-34.351 0-65.886-12.035-90.636-32.108l-54.736 54.736c-12.498 12.497-32.759 12.496-45.256 0-12.496-12.497-12.496-32.758 0-45.255l60.228-60.228C92.882 378.584 88 357.864 88 336v-16H32.666C15.23 320 .491 306.33.013 288.9-.484 270.816 14.028 256 32 256h56v-58.745l-46.628-46.628c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0L141.255 160h229.489l54.627-54.627c12.498-12.497 32.758-12.497 45.256 0 12.496 12.497 12.496 32.758 0 45.255L424 197.255V256h56c17.972 0 32.484 14.816 31.988 32.9zM257 0c-61.856 0-112 50.144-112 112h224C369 50.144 318.856 0 257 0z">
-                    </path>
-                  </svg></a>
-                </div>
-              </div>
-              <div class="grow ml-6">
-                <p class="font-bold mb-1">Bug report</p>
-                <p class="text-gray-500">bugs@aiomanagement.com</p>
-                <p class="text-gray-500">0130-8810****</p>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
-        
-      </div>
-    </div>
-  </section>
- 
-
-</div>
       </div>
     </div>
   );
